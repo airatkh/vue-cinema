@@ -1,16 +1,12 @@
 <template>
     <div id="movie-list">
         <div v-if="filteredMovie.length">
-            <movie-item v-for="movie in filteredMovie" :movie="movie.movie">
-            <div class="movie-sessions">
-                <div
-                        v-for="session in filteredSessions(movie.sessions)"
-                        class="session-time-wrapper tooltip-wrapper"
-                        v-tooltip="{seats: session.seats}"
-                >
-                    <div class="session-time">{{formatSessionTime(session.time)}}</div>
+            <movie-item v-for="movie in filteredMovie" class="movie" :movie="movie.movie">
+                <div class="movie-sessions">
+                    <div v-for="session in filteredSessions(movie.sessions)" class="session-time-wrapper">
+                        <div class="session-time">{{formatSessionTime(session.time)}}</div>
+                    </div>
                 </div>
-            </div>
             </movie-item>
         </div>
         <div class="no-results" v-else="movies.length">
@@ -44,7 +40,6 @@
                 }
             },
             sessionPassesTimeFilter(session){
-                //console.log(session);
                 if(!this.day.isSame(this.$moment(session.time), 'day')) {
                     return false;
                 }
@@ -80,6 +75,6 @@
         },
         components:{
             MovieItem
-        }
+        },
     }
 </script>

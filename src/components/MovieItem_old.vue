@@ -12,13 +12,13 @@
                 </router-link>
                 <span class="movie-rating">{{movie.Rated}}</span>
             </div>
-            <slot></slot>
         </div>
+        <slot></slot>
     </div>
 </template>
 
 <script>
     export default{
-        props: ['movie']
+        props: ['movie'],
     }
 </script>
